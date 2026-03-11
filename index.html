@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Estate Shine Cleaning — Professional, family-friendly premium home cleaning services in [City Placeholder]. 100% Bonded & Insured. Book online today." />
+  <title>Estate Shine Cleaning | Premium Home Cleaning in [City Placeholder]</title>
+
+  <!-- Google Fonts: Cormorant Garamond (headings/logo) + Montserrat (body/UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       SLIDE-OUT NAVIGATION MENU (mobile + hamburger trigger)
+  ============================================================ -->
+  <div id="menu-overlay" class="menu-overlay" aria-hidden="true"></div>
+  <nav id="slide-menu" class="slide-menu" aria-label="Primary navigation" aria-hidden="true">
+    <!-- Close X (accessibility fallback; hamburger also morphs) -->
+    <button id="menu-close" class="menu-close" aria-label="Close menu">
+      <span></span><span></span>
+    </button>
+
+    <!-- Logo -->
+    <div class="slide-menu__logo">
+      <img src="contnent/EstateShine-logo.png" alt="Estate Shine" class="slide-menu__logo-img" />
+    </div>
+
+    <!-- Nav links — large, centered -->
+    <ul class="slide-menu__links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#blueprint">Blueprint</a></li>
+      <li><a href="#before-after">Before &amp; After</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+
+    <!-- Bottom CTA zone -->
+    <div class="slide-menu__footer">
+      <div class="slide-menu__divider"></div>
+      <a href="#booking" class="slide-menu__book-btn btn btn--gold">Book Now</a>
+      <a href="tel:+1[PhonePlaceholder]" class="slide-menu__phone">[Phone Placeholder]</a>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HEADER — Sticky, Deep Forest Green, 3-column grid
+  ============================================================ -->
+  <header id="site-header" class="site-header" role="banner">
+    <div class="header__inner">
+
+      <!-- LEFT: Hamburger Menu -->
+      <button id="hamburger" class="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="slide-menu">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+
+      <!-- CENTER: Logo -->
+      <div class="header__center">
+        <a href="#" class="logo" aria-label="Estate Shine Cleaning — Home">
+          <img src="contnent/EstateShine-logo.png" alt="Estate Shine" class="logo__img" />
+        </a>
+      </div>
+
+      <!-- RIGHT: Phone Icon + Book Now CTA -->
+      <div class="header__right">
+        <a href="#booking" class="phone-icon" aria-label="Call us — [Phone Placeholder]">
+          <!-- Phone SVG (white receiver in beige/cream circle) -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6.6 10.8C7.8 13.2 9.8 15.2 12.2 16.4L14.2 14.4C14.4667 14.1333 14.8333 14.0667 15.2 14.2C16.3333 14.6 17.5667 14.8 18.8 14.8C19.4667 14.8 20 15.3333 20 16V19.2C20 19.8667 19.4667 20.4 18.8 20.4C10.4 20.4 3.6 13.6 3.6 5.2C3.6 4.5333 4.1333 4 4.8 4H8C8.6667 4 9.2 4.5333 9.2 5.2C9.2 6.4667 9.4 7.6667 9.8 8.8C9.9333 9.1667 9.8667 9.5333 9.6 9.8L7.6 11.8C7.26667 11.1333 6.93333 11 6.6 10.8Z" fill="white"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ============================================================
+       MAIN CONTENT
+  ============================================================ -->
+  <main>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section id="hero" class="hero" aria-labelledby="hero-heading">
+      <div class="hero__bg-shapes" aria-hidden="true">
+        <div class="hero__shape hero__shape--1"></div>
+        <div class="hero__shape hero__shape--2"></div>
+        <div class="hero__shape hero__shape--3"></div>
+      </div>
+      <div class="container hero__content">
+        <h1 id="hero-heading" class="hero__heading reveal">
+          Professional Home Cleaning<br />
+          You Can Trust in <em>[City Placeholder]</em>
+        </h1>
+        <p class="hero__subheadline reveal reveal--delay-1">
+          Family-friendly, eco-safe cleaning for homes that deserve the finest care.<br class="desktop-only" />
+          We treat every space as if it were our own.
+        </p>
+
+        <!-- Trust Badges -->
+        <div class="trust-badges reveal reveal--delay-2" aria-label="Trust indicators">
+          <div class="trust-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 2L3 7V12C3 16.55 6.84 20.74 12 22C17.16 20.74 21 16.55 21 12V7L12 2Z" fill="#C9A84C" opacity="0.2" stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M9 12L11 14L15 10" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>100% Bonded &amp; Insured</span>
+          </div>
+          <div class="trust-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+            <span>5-Star Rated</span>
+          </div>
+        </div>
+
+        <a href="#booking" class="btn btn--gold-outline hero__cta reveal reveal--delay-3">Get a Free Quote</a>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="hero__scroll" aria-hidden="true">
+        <span class="hero__scroll-line"></span>
+      </div>
+    </section>
+
+    <!-- ==================== HOW IT WORKS ==================== -->
+    <section id="how-it-works" class="how-it-works" aria-labelledby="hiw-heading">
+      <div class="container">
+        <div class="section-label reveal">The Process</div>
+        <h2 id="hiw-heading" class="section-heading reveal reveal--delay-1">Simple. Seamless. Spotless.</h2>
+        <div class="hiw-steps">
+
+          <!-- Step 1 -->
+          <article class="hiw-step reveal reveal--delay-1">
+            <div class="hiw-step__number">01</div>
+            <div class="hiw-step__icon" aria-hidden="true">
+              <svg width="38" height="38" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="8" y="6" width="32" height="36" rx="3" stroke="#C9A84C" stroke-width="1.8"/>
+                <line x1="15" y1="16" x2="33" y2="16" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"/>
+                <line x1="15" y1="22" x2="33" y2="22" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"/>
+                <line x1="15" y1="28" x2="25" y2="28" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"/>
+                <circle cx="36" cy="36" r="8" fill="#1E3A2F" stroke="#C9A84C" stroke-width="1.8"/>
+                <path d="M32 36L35 39L40 33" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="hiw-step__title">Book Online</h3>
+            <p class="hiw-step__desc">Choose your service, select a date and time that works for you — all in under two minutes.</p>
+          </article>
+
+          <!-- Arrow connector (desktop only) -->
+          <div class="hiw-arrow" aria-hidden="true">
+            <svg width="48" height="24" viewBox="0 0 48 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 12H44M44 12L34 4M44 12L34 20" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <!-- Step 2 -->
+          <article class="hiw-step reveal reveal--delay-2">
+            <div class="hiw-step__number">02</div>
+            <div class="hiw-step__icon" aria-hidden="true">
+              <svg width="38" height="38" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Spray mist sparkles -->
+                <path d="M8 16V12M6 14H10" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M14 10V8M13 9H15" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round"/>
+                <circle cx="11" cy="8" r="1" fill="#C9A84C" opacity="0.7"/>
+                <!-- Trigger arm -->
+                <path d="M20 22H10V28" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- Nozzle tube -->
+                <line x1="10" y1="22" x2="6" y2="16" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"/>
+                <!-- Bottle body -->
+                <rect x="20" y="18" width="18" height="24" rx="3" stroke="#C9A84C" stroke-width="1.8"/>
+                <!-- Pump/neck -->
+                <rect x="24" y="10" width="8" height="10" rx="2" stroke="#C9A84C" stroke-width="1.8"/>
+                <!-- Detail ridge -->
+                <line x1="24" y1="32" x2="36" y2="32" stroke="#C9A84C" stroke-width="1" stroke-dasharray="2,2" opacity="0.5"/>
+              </svg>
+            </div>
+            <h3 class="hiw-step__title">We Clean</h3>
+            <p class="hiw-step__desc">Our vetted, insured professionals arrive on time and clean every corner with premium, eco-safe products.</p>
+          </article>
+
+          <!-- Arrow connector (desktop only) -->
+          <div class="hiw-arrow" aria-hidden="true">
+            <svg width="48" height="24" viewBox="0 0 48 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 12H44M44 12L34 4M44 12L34 20" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <!-- Step 3 -->
+          <article class="hiw-step reveal reveal--delay-3">
+            <div class="hiw-step__number">03</div>
+            <div class="hiw-step__icon" aria-hidden="true">
+              <svg width="38" height="38" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Backrest -->
+                <rect x="8" y="18" width="32" height="14" rx="3" stroke="#C9A84C" stroke-width="1.8"/>
+                <!-- Seat -->
+                <rect x="12" y="28" width="24" height="10" rx="2" stroke="#C9A84C" stroke-width="1.8"/>
+                <!-- Left armrest -->
+                <rect x="6" y="22" width="8" height="16" rx="3" stroke="#C9A84C" stroke-width="1.8"/>
+                <!-- Right armrest -->
+                <rect x="34" y="22" width="8" height="16" rx="3" stroke="#C9A84C" stroke-width="1.8"/>
+                <!-- Legs -->
+                <line x1="14" y1="38" x2="14" y2="43" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"/>
+                <line x1="34" y1="38" x2="34" y2="43" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"/>
+                <!-- Cushion divider -->
+                <line x1="24" y1="28" x2="24" y2="38" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+              </svg>
+            </div>
+            <h3 class="hiw-step__title">You Relax</h3>
+            <p class="hiw-step__desc">Come home to a pristine, fresh-smelling estate. Guaranteed satisfaction — every single visit.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== INTERACTIVE BLUEPRINT ==================== -->
+    <section id="blueprint" class="blueprint-section" aria-labelledby="blueprint-heading">
+      <div class="container">
+        <div class="section-label reveal">Our Checklist</div>
+        <h2 id="blueprint-heading" class="section-heading reveal reveal--delay-1">Explore Your Clean</h2>
+        <p class="section-subtext reveal reveal--delay-2">Hover or tap a room to see exactly what we clean — every nook, every surface.</p>
+
+        <div class="blueprint-wrapper">
+          <!-- SVG Floor Plan -->
+          <svg id="floor-plan" class="floor-plan" viewBox="0 0 720 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interactive floor plan — tap a room to see cleaning checklist">
+
+            <!-- Outer walls -->
+            <rect x="10" y="10" width="700" height="500" rx="4" fill="none" stroke="#C9A84C" stroke-width="2" opacity="0.35"/>
+
+            <!-- LIVING ROOM — large, left side, top portion -->
+            <g class="floor-zone" data-zone="livingroom" role="button" tabindex="0" aria-label="Living Room — tap to see checklist">
+              <rect x="10" y="10" width="380" height="300" rx="0" class="zone-rect" fill="rgba(201,168,76,0.04)" stroke="#C9A84C" stroke-width="1.5"/>
+              <!-- Sofa outline (decorative) -->
+              <rect x="40" y="255" width="130" height="35" rx="3" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+              <rect x="40" y="228" width="130" height="27" rx="3" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+              <text x="200" y="175" text-anchor="middle" class="zone-label" fill="#C9A84C" font-family="Montserrat, sans-serif" font-size="13" font-weight="600" letter-spacing="2">LIVING ROOM</text>
+            </g>
+
+            <!-- KITCHEN — bottom-left, below living room -->
+            <g class="floor-zone" data-zone="kitchen" role="button" tabindex="0" aria-label="Kitchen — tap to see checklist">
+              <rect x="10" y="315" width="200" height="195" rx="0" class="zone-rect" fill="rgba(201,168,76,0.04)" stroke="#C9A84C" stroke-width="1.5"/>
+              <!-- Kitchen island (decorative) -->
+              <rect x="45" y="368" width="120" height="52" rx="2" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+              <text x="110" y="418" text-anchor="middle" class="zone-label" fill="#C9A84C" font-family="Montserrat, sans-serif" font-size="13" font-weight="600" letter-spacing="2">KITCHEN</text>
+            </g>
+
+            <!-- HALLWAY — center vertical strip (decorative, not interactive) -->
+            <rect x="395" y="10" width="80" height="500" fill="rgba(201,168,76,0.03)" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+            <text x="435" y="270" text-anchor="middle" fill="#C9A84C" font-family="Montserrat, sans-serif" font-size="9" font-weight="400" letter-spacing="3" opacity="0.5" transform="rotate(-90, 435, 270)">HALL</text>
+
+            <!-- BEDROOM — top-right -->
+            <g class="floor-zone" data-zone="bedroom" role="button" tabindex="0" aria-label="Bedroom — tap to see checklist">
+              <rect x="480" y="10" width="230" height="240" rx="0" class="zone-rect" fill="rgba(201,168,76,0.04)" stroke="#C9A84C" stroke-width="1.5"/>
+              <!-- Bed outline (decorative) -->
+              <rect x="515" y="45" width="155" height="95" rx="4" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+              <rect x="515" y="45" width="155" height="28" rx="4" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+              <text x="595" y="175" text-anchor="middle" class="zone-label" fill="#C9A84C" font-family="Montserrat, sans-serif" font-size="13" font-weight="600" letter-spacing="2">BEDROOM</text>
+            </g>
+
+            <!-- BATHROOM — bottom-right -->
+            <g class="floor-zone" data-zone="bathroom" role="button" tabindex="0" aria-label="Bathroom — tap to see checklist">
+              <rect x="480" y="255" width="230" height="255" rx="0" class="zone-rect" fill="rgba(201,168,76,0.04)" stroke="#C9A84C" stroke-width="1.5"/>
+              <!-- Tub outline (decorative) -->
+              <rect x="505" y="285" width="95" height="55" rx="6" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+              <!-- Toilet circle (decorative) -->
+              <circle cx="648" cy="313" r="22" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+              <text x="595" y="420" text-anchor="middle" class="zone-label" fill="#C9A84C" font-family="Montserrat, sans-serif" font-size="13" font-weight="600" letter-spacing="2">BATHROOM</text>
+            </g>
+
+            <!-- Door symbols — architectural door panel (solid) + dashed quarter-circle sweep -->
+            <!-- Living Room ↔ Hallway -->
+            <line x1="390" y1="110" x2="390" y2="75" stroke="#C9A84C" stroke-width="1" opacity="0.45"/>
+            <path d="M 390,75 A 35,35 0 0,1 425,110" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.45" stroke-dasharray="3,3"/>
+            <!-- Kitchen ↔ corridor -->
+            <line x1="210" y1="315" x2="210" y2="350" stroke="#C9A84C" stroke-width="1" opacity="0.45"/>
+            <path d="M 210,315 A 35,35 0 0,0 175,350" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.45" stroke-dasharray="3,3"/>
+            <!-- Bedroom ↔ Hallway -->
+            <line x1="475" y1="75" x2="475" y2="110" stroke="#C9A84C" stroke-width="1" opacity="0.45"/>
+            <path d="M 475,75 A 35,35 0 0,0 440,110" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.45" stroke-dasharray="3,3"/>
+            <!-- Bathroom ↔ Hallway -->
+            <line x1="475" y1="310" x2="475" y2="345" stroke="#C9A84C" stroke-width="1" opacity="0.45"/>
+            <path d="M 475,310 A 35,35 0 0,0 440,345" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.45" stroke-dasharray="3,3"/>
+
+            <!-- Window marks — 3-line architectural symbol on exterior walls -->
+            <!-- Living Room left wall (x=10, y=130–170) -->
+            <line x1="6" y1="130" x2="14" y2="130" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+            <line x1="6" y1="150" x2="14" y2="150" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+            <line x1="6" y1="170" x2="14" y2="170" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+            <!-- Bedroom top wall (x=540–590, y=10) -->
+            <line x1="540" y1="6" x2="540" y2="14" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+            <line x1="565" y1="6" x2="565" y2="14" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+            <line x1="590" y1="6" x2="590" y2="14" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+            <!-- Kitchen bottom wall (x=50–90, y=510) -->
+            <line x1="50" y1="506" x2="50" y2="514" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+            <line x1="70" y1="506" x2="70" y2="514" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+            <line x1="90" y1="506" x2="90" y2="514" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+            <!-- Bathroom right wall (x=710, y=340–380) -->
+            <line x1="706" y1="340" x2="714" y2="340" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+            <line x1="706" y1="360" x2="714" y2="360" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+            <line x1="706" y1="380" x2="714" y2="380" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+
+            <!-- Kitchen sink (top wall) -->
+            <rect x="15" y="316" width="40" height="28" rx="4" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+            <rect x="19" y="320" width="32" height="20" rx="3" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+            <!-- Kitchen stove burners (near right wall) -->
+            <circle cx="175" cy="335" r="6" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+            <circle cx="195" cy="335" r="6" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+            <circle cx="175" cy="355" r="6" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+            <circle cx="195" cy="355" r="6" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+
+            <!-- Bathroom vanity/sink -->
+            <rect x="545" y="450" width="55" height="30" rx="4" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+
+            <!-- Living Room coffee table (in front of sofa) -->
+            <rect x="60" y="210" width="90" height="16" rx="2" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+
+            <!-- Compass (decorative — bottom-right) -->
+            <text x="692" y="497" text-anchor="middle" fill="#C9A84C" font-size="10" opacity="0.4" font-family="Montserrat, sans-serif">N</text>
+            <line x1="692" y1="484" x2="692" y2="473" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+            <!-- Scale bar (decorative) -->
+            <line x1="622" y1="508" x2="682" y2="508" stroke="#C9A84C" stroke-width="1" opacity="0.3"/>
+            <line x1="622" y1="505" x2="622" y2="511" stroke="#C9A84C" stroke-width="1" opacity="0.3"/>
+            <line x1="682" y1="505" x2="682" y2="511" stroke="#C9A84C" stroke-width="1" opacity="0.3"/>
+
+          </svg>
+
+          <!-- Tooltip (populated by JS) -->
+          <div id="blueprint-tooltip" class="blueprint-tooltip" role="tooltip" aria-live="polite" aria-hidden="true">
+            <div class="blueprint-tooltip__header">
+              <span class="blueprint-tooltip__room"></span>
+            </div>
+            <ul class="blueprint-tooltip__list"></ul>
+          </div>
+        </div>
+        <p class="blueprint-hint" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#C9A84C" stroke-width="1.5"/><path d="M12 8V12M12 16H12.01" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Hold (on mobile) or hover any room to reveal the cleaning checklist
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ==================== BEFORE / AFTER SLIDER ==================== -->
+    <section id="before-after" class="before-after-section" aria-labelledby="ba-heading">
+      <div class="container">
+        <div class="section-label reveal">Results</div>
+        <h2 id="ba-heading" class="section-heading reveal reveal--delay-1">The Estate Shine Difference</h2>
+        <p class="section-subtext reveal reveal--delay-2">Drag the slider to reveal the transformation. Every clean, every time.</p>
+
+        <div class="slider-wrapper reveal">
+          <div class="slider-container" id="before-after-slider" role="img" aria-label="Before and after cleaning comparison slider">
+
+            <!-- AFTER image (bottom layer, full width) -->
+            <div class="slider-img slider-img--after"
+                 style="background-image: url('contnent/after-cleaning.png');"
+                 aria-label="After: clean room">
+              <span class="slider-label slider-label--after">AFTER</span>
+            </div>
+
+            <!-- BEFORE image (top layer, clipped by JS) -->
+            <div class="slider-img slider-img--before"
+                 style="background-image: url('contnent/before-cleaning.png');"
+                 aria-label="Before: messy room">
+              <span class="slider-label slider-label--before">BEFORE</span>
+            </div>
+
+            <!-- Draggable handle -->
+            <div class="slider-handle" id="slider-handle" role="slider" aria-label="Drag to compare before and after" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" tabindex="0">
+              <div class="slider-handle__line"></div>
+              <div class="slider-handle__btn">
+                <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M6 1.5L1.5 6L6 10.5" stroke="#1E3A2F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M14 1.5L18.5 6L14 10.5" stroke="#1E3A2F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SERVICES OVERVIEW ==================== -->
+    <section id="services" class="services-section" aria-labelledby="services-heading">
+      <div class="container">
+        <div class="section-label reveal">What We Offer</div>
+        <h2 id="services-heading" class="section-heading reveal reveal--delay-1">Choose Your Clean</h2>
+        <p class="section-subtext reveal reveal--delay-2">Transparent pricing. Zero surprises. Every plan includes our satisfaction guarantee.</p>
+
+        <div class="services-grid">
+
+          <!-- Card 1: Standard Clean -->
+          <article class="service-card reveal reveal--delay-1">
+            <div class="service-card__icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="24" r="20" stroke="#C9A84C" stroke-width="1.8"/>
+                <path d="M16 24L22 30L32 18" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Standard Clean</h3>
+            <p class="service-card__desc">Our routine clean keeps your home consistently fresh. Perfect for regular weekly or bi-weekly maintenance.</p>
+            <ul class="service-card__features">
+              <li>[All main living areas]</li>
+              <li>[Kitchen surfaces &amp; appliances]</li>
+              <li>[Bathrooms sanitized]</li>
+              <li>[Floors vacuumed &amp; mopped]</li>
+            </ul>
+            <div class="service-card__price">From $<span class="price-placeholder">[Price Placeholder]</span>/clean</div>
+            <a href="#booking" class="btn btn--outline service-card__btn">Book Standard</a>
+          </article>
+
+          <!-- Card 2: Deep Clean (FEATURED) -->
+          <article class="service-card service-card--featured reveal reveal--delay-2">
+            <div class="service-card__badge">Most Popular</div>
+            <div class="service-card__icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M24 4L28.5 16.5H42L31.5 24.5L35.5 37.5L24 30L12.5 37.5L16.5 24.5L6 16.5H19.5L24 4Z" stroke="#C9A84C" stroke-width="1.8" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Deep Clean</h3>
+            <p class="service-card__desc">A thorough, top-to-bottom clean for homes that need extra attention. Ideal for first-time clients or seasonal resets.</p>
+            <ul class="service-card__features">
+              <li>[Everything in Standard]</li>
+              <li>[Inside oven &amp; refrigerator]</li>
+              <li>[Baseboards &amp; window sills]</li>
+              <li>[Interior cabinet cleaning]</li>
+            </ul>
+            <div class="service-card__price">From $<span class="price-placeholder">[Price Placeholder]</span>/clean</div>
+            <a href="#booking" class="btn btn--gold service-card__btn">Book Deep Clean</a>
+          </article>
+
+          <!-- Card 3: Move-In/Move-Out -->
+          <article class="service-card reveal reveal--delay-3">
+            <div class="service-card__icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="8" y="18" width="32" height="24" rx="2" stroke="#C9A84C" stroke-width="1.8"/>
+                <path d="M18 18V14C18 10.6863 20.6863 8 24 8C27.3137 8 30 10.6863 30 14V18" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M20 30L24 34L28 30" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="24" y1="26" x2="24" y2="34" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Move-In / Move-Out</h3>
+            <p class="service-card__desc">Leaving or arriving? Our specialized move clean ensures every corner sparkles for the next chapter.</p>
+            <ul class="service-card__features">
+              <li>[Complete deep clean]</li>
+              <li>[All appliances inside &amp; out]</li>
+              <li>[Walls spot-cleaned]</li>
+              <li>[Garage &amp; storage areas]</li>
+            </ul>
+            <div class="service-card__price">From $<span class="price-placeholder">[Price Placeholder]</span>/clean</div>
+            <a href="#booking" class="btn btn--outline service-card__btn">Book Move Clean</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== BOOKING SECTION ==================== -->
+    <section id="booking" class="booking-section" aria-labelledby="booking-heading">
+      <div class="container">
+        <div class="section-label" style="color: var(--color-gold-light);">Ready to Shine?</div>
+        <h2 id="booking-heading" class="section-heading" style="color: var(--color-gold);">Get Your Price &amp; Book Instantly</h2>
+        <p class="section-subtext" style="color: var(--color-gold-light); opacity: 0.8;">No calls needed. Select your service and schedule online in minutes.</p>
+
+        <!-- BookingKoala widget container — styled with loading state -->
+        <div id="bookingkoala-widget-container" class="booking-widget-wrapper reveal" aria-label="Booking widget loading area">
+          <!-- CSS spinner (replaced by widget script when loaded) -->
+          <div class="booking-widget-placeholder">
+            <div class="booking-spinner" aria-hidden="true">
+              <div class="booking-spinner__ring"></div>
+              <div class="booking-spinner__dot"></div>
+            </div>
+            <p class="booking-widget-hint">Loading booking form…</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer id="site-footer" class="site-footer" role="contentinfo">
+    <div class="footer__inner container">
+
+      <!-- Column 1: Brand -->
+      <div class="footer__brand">
+        <a href="#" class="logo logo--footer" aria-label="Estate Shine Cleaning Home">
+          <img src="contnent/EstateShine-logo.png" alt="Estate Shine" class="logo__img" />
+        </a>
+        <p class="footer__tagline">[Brand Placeholder] — Premium cleaning services for families and estates who demand the very best.</p>
+        <!-- Social Media -->
+        <div class="footer__social" aria-label="Social media links">
+          <a href="#" class="footer__social-link" aria-label="Follow us on Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" stroke="#C9A84C" stroke-width="1.5"/>
+              <circle cx="12" cy="12" r="5" stroke="#C9A84C" stroke-width="1.5"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="#C9A84C"/>
+            </svg>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="Follow us on Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" stroke="#C9A84C" stroke-width="1.5"/>
+              <path d="M13 21V13H15.5L16 10H13V8.5C13 7.67 13.5 7 14.5 7H16V4.5C16 4.5 14.9 4 13.5 4C11.5 4 10 5.5 10 8V10H8V13H10V21" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Column 2: Navigation -->
+      <div class="footer__nav" aria-label="Footer navigation">
+        <h4 class="footer__col-heading">Navigate</h4>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#before-after">Before &amp; After</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#booking">Book Now</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Contact -->
+      <div class="footer__contact">
+        <h4 class="footer__col-heading">Contact Us</h4>
+        <p>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="vertical-align:middle;margin-right:6px"><path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="#C9A84C"/></svg>
+          <a href="mailto:[EmailPlaceholder]">[Email Placeholder]</a>
+        </p>
+        <p>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="vertical-align:middle;margin-right:6px"><path d="M6.6 10.8C7.8 13.2 9.8 15.2 12.2 16.4L14.2 14.4C14.47 14.13 14.83 14.07 15.2 14.2C16.33 14.6 17.57 14.8 18.8 14.8C19.47 14.8 20 15.33 20 16V19.2C20 19.87 19.47 20.4 18.8 20.4C10.4 20.4 3.6 13.6 3.6 5.2C3.6 4.53 4.13 4 4.8 4H8C8.67 4 9.2 4.53 9.2 5.2C9.2 6.47 9.4 7.67 9.8 8.8C9.93 9.17 9.87 9.53 9.6 9.8L7.6 11.8C7.27 11.13 6.93 11 6.6 10.8Z" fill="#C9A84C"/></svg>
+          <a href="tel:+1[PhonePlaceholder]">[Phone Placeholder]</a>
+        </p>
+        <p style="margin-top: 0.5rem; color: var(--color-gold-light); opacity: 0.7; font-size: 0.8rem;">[City Placeholder], [State Placeholder]</p>
+      </div>
+
+    </div>
+
+    <!-- SEO Service Areas Block -->
+    <div class="footer__seo-block">
+      <div class="container">
+        <p class="footer__seo-text">
+          <strong>Our Service Areas:</strong>
+          [Zip1], [Zip2], [Zip3], [Zip4], [Zip5], [Zip6], [Zip7], [Zip8], [Zip9], [Zip10]
+        </p>
+      </div>
+    </div>
+
+    <!-- Copyright Bar -->
+    <div class="footer__copyright">
+      <div class="container">
+        <p>&copy; <span id="footer-year"></span> Estate Shine Cleaning. All rights reserved. | [City Placeholder], [State Placeholder]</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="reviews-modal" class="reviews-modal" hidden
+       role="dialog" aria-modal="true" aria-labelledby="reviews-modal-title">
+    <div class="reviews-modal__box">
+
+      <header class="reviews-modal__header">
+        <h2 id="reviews-modal-title" class="reviews-modal__title">Our Top Verified Reviews</h2>
+        <button id="reviews-modal-close" class="reviews-modal__close" aria-label="Close reviews">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <line x1="1" y1="1" x2="17" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="17" y1="1" x2="1" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </header>
+
+      <div class="reviews-modal__stage">
+
+        <button id="reviews-modal-prev" class="carousel-arrow carousel-arrow--prev" aria-label="Previous review">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <polyline points="13,4 7,10 13,16" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <div class="carousel-viewport" id="carousel-viewport">
+          <div class="carousel-track" id="carousel-track">
+
+            <!-- Card 1: Sarah M. -->
+            <div class="review-card" role="group" aria-label="Review 1 of 5">
+              <div class="reviews-modal__reviewer">
+                <div class="reviews-modal__avatar" aria-hidden="true">S</div>
+                <div class="reviews-modal__reviewer-info">
+                  <span class="reviews-modal__name">Sarah M.</span>
+                  <span class="reviews-modal__city">Austin, TX</span>
+                </div>
+                <div class="reviews-modal__stars" aria-label="Rating: 5.0 out of 5">
+                  ★★★★★<span class="reviews-modal__rating-num">5.0</span>
+                </div>
+              </div>
+              <p class="reviews-modal__text">"Absolutely spotless after every visit. The team is thorough, professional, and genuinely cares about the details. My home has never looked this good."</p>
+            </div>
+
+            <!-- Card 2: James T. -->
+            <div class="review-card" role="group" aria-label="Review 2 of 5">
+              <div class="reviews-modal__reviewer">
+                <div class="reviews-modal__avatar" aria-hidden="true">J</div>
+                <div class="reviews-modal__reviewer-info">
+                  <span class="reviews-modal__name">James T.</span>
+                  <span class="reviews-modal__city">Denver, CO</span>
+                </div>
+                <div class="reviews-modal__stars" aria-label="Rating: 4.9 out of 5">
+                  ★★★★★<span class="reviews-modal__rating-num">4.9</span>
+                </div>
+              </div>
+              <p class="reviews-modal__text">"I was blown away by the deep clean. They got into every corner and left the place smelling incredible. Highly recommend Estate Shine to anyone!"</p>
+            </div>
+
+            <!-- Card 3: Priya K. -->
+            <div class="review-card" role="group" aria-label="Review 3 of 5">
+              <div class="reviews-modal__reviewer">
+                <div class="reviews-modal__avatar" aria-hidden="true">P</div>
+                <div class="reviews-modal__reviewer-info">
+                  <span class="reviews-modal__name">Priya K.</span>
+                  <span class="reviews-modal__city">Seattle, WA</span>
+                </div>
+                <div class="reviews-modal__stars" aria-label="Rating: 4.8 out of 5">
+                  ★★★★★<span class="reviews-modal__rating-num">4.8</span>
+                </div>
+              </div>
+              <p class="reviews-modal__text">"Reliable, on-time, and meticulous. Booking was effortless and the results speak for themselves. This is the only cleaning service I will ever use."</p>
+            </div>
+
+            <!-- Card 4: Carlos R. -->
+            <div class="review-card" role="group" aria-label="Review 4 of 5">
+              <div class="reviews-modal__reviewer">
+                <div class="reviews-modal__avatar" aria-hidden="true">C</div>
+                <div class="reviews-modal__reviewer-info">
+                  <span class="reviews-modal__name">Carlos R.</span>
+                  <span class="reviews-modal__city">Miami, FL</span>
+                </div>
+                <div class="reviews-modal__stars" aria-label="Rating: 5.0 out of 5">
+                  ★★★★★<span class="reviews-modal__rating-num">5.0</span>
+                </div>
+              </div>
+              <p class="reviews-modal__text">"My apartment looked brand new. The crew was courteous and fast — done in under two hours without missing a single spot. Five stars, no question."</p>
+            </div>
+
+            <!-- Card 5: Emily W. -->
+            <div class="review-card" role="group" aria-label="Review 5 of 5">
+              <div class="reviews-modal__reviewer">
+                <div class="reviews-modal__avatar" aria-hidden="true">E</div>
+                <div class="reviews-modal__reviewer-info">
+                  <span class="reviews-modal__name">Emily W.</span>
+                  <span class="reviews-modal__city">Chicago, IL</span>
+                </div>
+                <div class="reviews-modal__stars" aria-label="Rating: 4.9 out of 5">
+                  ★★★★★<span class="reviews-modal__rating-num">4.9</span>
+                </div>
+              </div>
+              <p class="reviews-modal__text">"Worth every penny. Estate Shine transformed my space before a family gathering and every guest commented on how immaculate everything was."</p>
+            </div>
+
+          </div>
+        </div>
+
+        <button id="reviews-modal-next" class="carousel-arrow carousel-arrow--next" aria-label="Next review">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <polyline points="7,4 13,10 7,16" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+      </div>
+
+      <p class="reviews-modal__counter" id="reviews-modal-counter" aria-live="polite">1 / 5</p>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
