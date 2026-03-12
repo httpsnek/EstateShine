@@ -607,6 +607,24 @@ function initReviewsModal() {
 /* ─────────────────────────────────────────────────────────────
    INIT — run all modules when DOM is ready
 ───────────────────────────────────────────────────────────── */
+function initFloatingBookBtn() {
+  const btn = document.querySelector('.floating-book-btn');
+  const bookingSection = document.getElementById('booking');
+  if (!btn || !bookingSection) return;
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        btn.classList.add('hidden');
+      } else {
+        btn.classList.remove('hidden');
+      }
+    },
+    { threshold: 0.1 }
+  );
+  observer.observe(bookingSection);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initStickyHeader();
   initMobileMenu();
@@ -616,4 +634,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initFooterYear();
   initScrollReveal();
   initReviewsModal();
+  initFloatingBookBtn();
 });
