@@ -707,6 +707,56 @@ function initFaqModal() {
   });
 }
 
+/* ─────────────────────────────────────────────────────────────
+   BOOKING FOCUS SCROLL
+   - Saves scroll position when user engages the iframe
+   - Scrolls page to top of booking container for clear view
+   - Returns user to original position on click-outside
+   - Safety timeout resets state after 60 s of inactivity
+───────────────────────────────────────────────────────────── */
+function initBookingFocusScroll() {
+  const bookingSection = document.getElementById('booking');
+  const widgetWrapper  = document.querySelector('.booking-widget-wrapper');
+  if (!bookingSection || !widgetWrapper) return;
+
+  let userOriginalY = 0;
+  let safetyTimer   = null;
+
+  function resetState() {
+    userOriginalY = 0;
+    clearTimeout(safetyTimer);
+    safetyTimer = null;
+  }
+
+  function returnToOrigin() {
+    if (userOriginalY === 0) return;
+    window.scrollTo({ top: userOriginalY, behavior: 'smooth' });
+    resetState();
+  }
+
+  // ── Engage: first click/touch on or around the iframe ──
+  ['click', 'touchstart'].forEach(eventType => {
+    bookingSection.addEventListener(eventType, () => {
+      if (userOriginalY !== 0) return; // already engaged
+
+      userOriginalY = window.scrollY;
+
+      const wrapperTop = widgetWrapper.getBoundingClientRect().top + window.scrollY - 16;
+      window.scrollTo({ top: wrapperTop, behavior: 'smooth' });
+
+      // Safety: auto-reset after 60 s if user never clicks outside
+      safetyTimer = setTimeout(resetState, 60000);
+    }, { passive: true });
+  });
+
+  // ── Return: click anywhere outside the booking section ──
+  document.addEventListener('click', (e) => {
+    if (userOriginalY === 0) return;
+    if (bookingSection.contains(e.target)) return;
+    returnToOrigin();
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initStickyHeader();
   initMobileMenu();
@@ -718,4 +768,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initReviewsModal();
   initFloatingBookBtn();
   initFaqModal();
+  initBookingFocusScroll();
 });
