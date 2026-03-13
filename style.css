@@ -1032,11 +1032,9 @@ body.no-scroll {
   max-width: 800px;
   width: 100%;
   height: auto;
-  min-height: 1000px;
   background: var(--color-off-white);
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
-  overflow: hidden;
 }
 
 
