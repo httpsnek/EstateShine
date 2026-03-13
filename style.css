@@ -1116,12 +1116,25 @@ body.no-scroll {
     text-decoration: none;
     border-radius: 50px;
     box-shadow: 0 8px 32px rgba(212, 175, 55, 0.35), 0 2px 8px rgba(0, 0, 0, 0.15);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    will-change: transform;
+    animation: bookingPulse 2.8s ease-in-out infinite;
   }
 
   .booking-mobile-cta__btn:active {
+    animation: none;
     transform: scale(0.97);
     box-shadow: 0 4px 16px rgba(212, 175, 55, 0.25);
+  }
+
+  @keyframes bookingPulse {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 8px 32px rgba(212, 175, 55, 0.35), 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+    50% {
+      transform: scale(1.03);
+      box-shadow: 0 12px 48px rgba(212, 175, 55, 0.55), 0 4px 16px rgba(0, 0, 0, 0.12);
+    }
   }
 
   .booking-mobile-cta__sub {
