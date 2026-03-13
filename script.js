@@ -596,20 +596,38 @@ function initReviewsModal() {
 ───────────────────────────────────────────────────────────── */
 function initFloatingBookBtn() {
   const btn = document.querySelector('.floating-book-btn');
-  const bookingSection = document.querySelector('.booking-widget-wrapper');
-  if (!btn || !bookingSection) return;
+  if (!btn) return;
 
-  const observer = new IntersectionObserver(
-    ([entry]) => {
+  // Track intersection state for both targets independently.
+  // The floating button hides whenever EITHER visible target is on screen.
+  const intersecting = new Set();
+
+  function update() {
+    if (intersecting.size > 0) {
+      btn.classList.add('hidden');
+    } else {
+      btn.classList.remove('hidden');
+    }
+  }
+
+  const observerOptions = { root: null, threshold: 0, rootMargin: '0px 0px -100px 0px' };
+
+  function observe(selector) {
+    const el = document.querySelector(selector);
+    if (!el) return;
+    new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
-        btn.classList.add('hidden');
+        intersecting.add(selector);
       } else {
-        btn.classList.remove('hidden');
+        intersecting.delete(selector);
       }
-    },
-    { root: null, threshold: 0, rootMargin: '0px 0px -100px 0px' }
-  );
-  observer.observe(bookingSection);
+      update();
+    }, observerOptions).observe(el);
+  }
+
+  // Desktop: watch the iframe wrapper; Mobile: watch the CTA block
+  observe('.booking-widget-wrapper');
+  observe('.booking-mobile-cta');
 }
 
 /* ─────────────────────────────────────────────────────────────

@@ -471,10 +471,20 @@
         <h2 id="booking-heading" class="section-heading" style="color: var(--color-gold);">Get Your Price &amp; Book Instantly</h2>
         <p class="section-subtext" style="color: var(--color-gold-light); opacity: 0.8;">No calls needed. Select your service and schedule online in minutes.</p>
 
-        <!-- BookingKoala widget container -->
+        <!-- BookingKoala widget container (desktop only) -->
         <div id="bookingkoala-widget-container" class="booking-widget-wrapper" aria-label="Online booking form">
           <iframe src="https://estateshinecleaning.bookingkoala.com/booknow?embed=true" style="border:none;display:block;width:100%" scrolling="no"></iframe><script src="https://estateshinecleaning.bookingkoala.com/resources/embed.js"></script>
           <a id="booking-mobile-overlay" class="booking-mobile-overlay" href="https://estateshinecleaning.bookingkoala.com/booknow" target="_blank" rel="noopener" aria-label="Book now — opens booking form"></a>
+        </div>
+
+        <!-- Mobile CTA (replaces iframe on small screens) -->
+        <div class="booking-mobile-cta" aria-label="Book a cleaning on mobile">
+          <p class="booking-mobile-cta__hint">Online booking — fast &amp; easy</p>
+          <a href="https://estateshinecleaning.bookingkoala.com/booknow" target="_blank" rel="noopener" class="booking-mobile-cta__btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Book in 60s &amp; Get Instant Quote
+          </a>
+          <p class="booking-mobile-cta__sub">No calls needed &nbsp;·&nbsp; Instant confirmation</p>
         </div>
       </div>
     </section>

@@ -1067,6 +1067,72 @@ body.no-scroll {
   }
 }
 
+/* ── Mobile booking CTA (shown only on mobile, hidden on desktop) ── */
+.booking-mobile-cta {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  /* Hide the iframe wrapper entirely on mobile */
+  .booking-widget-wrapper {
+    display: none;
+  }
+
+  /* Show the mobile CTA block */
+  .booking-mobile-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 40px 24px;
+    text-align: center;
+  }
+
+  .booking-mobile-cta__hint {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-gold-light);
+    margin: 0;
+    opacity: 0.85;
+  }
+
+  .booking-mobile-cta__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 380px;
+    padding: 20px 28px;
+    background: var(--color-gold);
+    color: var(--color-green);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 8px 32px rgba(212, 175, 55, 0.35), 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .booking-mobile-cta__btn:active {
+    transform: scale(0.97);
+    box-shadow: 0 4px 16px rgba(212, 175, 55, 0.25);
+  }
+
+  .booking-mobile-cta__sub {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    color: var(--color-gold-light);
+    margin: 0;
+    opacity: 0.65;
+  }
+}
+
 /* ─── SCROLL-REVEAL ANIMATIONS ───────────────────────────────── */
 .reveal {
   opacity: 0;
