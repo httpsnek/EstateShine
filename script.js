@@ -625,6 +625,91 @@ function initFloatingBookBtn() {
   observer.observe(bookingSection);
 }
 
+/* ─────────────────────────────────────────────────────────────
+   FAQ MODAL — Custom accordion (CSS Grid height trick)
+   - Opens from drawer "FAQ" link (closes drawer, keeps overlay)
+   - Exclusive accordion: only one item open at a time
+   - Close: X button, overlay click, or Escape key
+───────────────────────────────────────────────────────────── */
+function initFaqModal() {
+  const modal     = document.getElementById('faq-modal');
+  const closeBtn  = document.getElementById('faq-modal-close');
+  const faqLink   = document.getElementById('faq-link');
+  const overlay   = document.getElementById('menu-overlay');
+  const slideMenu = document.getElementById('slide-menu');
+  const hamburger = document.getElementById('hamburger');
+
+  if (!modal || !overlay || !slideMenu) return;
+
+  function openModal() {
+    modal.hidden = false;
+    requestAnimationFrame(() => modal.classList.add('is-open'));
+    closeBtn?.focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove('is-open');
+    overlay.classList.remove('is-active');
+    document.body.classList.remove('no-scroll');
+    modal.addEventListener('transitionend', () => { modal.hidden = true; }, { once: true });
+    hamburger?.focus();
+  }
+
+  function closeDrawerOnly() {
+    slideMenu.classList.remove('is-open');
+    slideMenu.setAttribute('aria-hidden', 'true');
+    if (hamburger) {
+      hamburger.classList.remove('is-open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Open navigation menu');
+    }
+  }
+
+  // ── Accordion: exclusive open/close ──
+  const faqItems = Array.from(modal.querySelectorAll('.faq-item'));
+  faqItems.forEach((item) => {
+    const btn = item.querySelector('.faq-question');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const isAlreadyOpen = item.classList.contains('is-open');
+      // Close all items
+      faqItems.forEach((i) => {
+        i.classList.remove('is-open');
+        i.querySelector('.faq-question')?.setAttribute('aria-expanded', 'false');
+      });
+      // Open clicked item only if it wasn't already open
+      if (!isAlreadyOpen) {
+        item.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // ── FAQ link in drawer ──
+  if (faqLink) {
+    faqLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      closeDrawerOnly();
+      openModal();
+    }, { capture: true });
+  }
+
+  // ── Overlay click: close modal if open ──
+  overlay.addEventListener('click', (e) => {
+    if (!modal.hidden) {
+      closeModal();
+      e.stopImmediatePropagation();
+    }
+  }, { capture: true });
+
+  // ── Close button & Escape ──
+  closeBtn?.addEventListener('click', closeModal);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.hidden) closeModal();
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initStickyHeader();
   initMobileMenu();
@@ -635,4 +720,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initReviewsModal();
   initFloatingBookBtn();
+  initFaqModal();
 });
