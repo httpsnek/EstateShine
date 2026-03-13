@@ -629,6 +629,8 @@ function initFaqModal() {
   if (!modal || !overlay || !slideMenu) return;
 
   function openModal() {
+    overlay.classList.add('is-active');
+    document.body.classList.add('no-scroll');
     modal.hidden = false;
     requestAnimationFrame(() => modal.classList.add('is-open'));
     closeBtn?.focus();
@@ -681,6 +683,14 @@ function initFaqModal() {
       openModal();
     }, { capture: true });
   }
+
+  // ── FAQ links outside the drawer (e.g. footer) ──
+  document.querySelectorAll('footer a[href="#faq"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal();
+    });
+  });
 
   // ── Overlay click: close modal if open ──
   overlay.addEventListener('click', (e) => {
