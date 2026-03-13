@@ -334,21 +334,10 @@ body.no-scroll {
 
 /* ─── HEADER ─────────────────────────────────────────────────── */
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 9999;
+  position: relative;
   width: 100%;
   background: var(--color-green);
   border-bottom: 1px solid var(--color-border);
-  transition: background var(--transition-base), backdrop-filter var(--transition-base), box-shadow var(--transition-base);
-}
-
-/* Scrolled state: slight transparency + blur */
-.site-header.scrolled {
-  background: rgba(30, 58, 47, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 
 .header__inner {

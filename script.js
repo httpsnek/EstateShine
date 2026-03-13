@@ -13,31 +13,8 @@
 
 'use strict';
 
-/* ─────────────────────────────────────────────────────────────
-   1. STICKY HEADER — adds .scrolled class for backdrop-filter
-───────────────────────────────────────────────────────────── */
 function initStickyHeader() {
-  const header = document.getElementById('site-header');
-  const hero   = document.getElementById('hero');
-
-  if (!header) return;
-
-  // If IntersectionObserver is supported, observe the hero section
-  if ('IntersectionObserver' in window && hero) {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        // Once hero leaves viewport → add scrolled class
-        header.classList.toggle('scrolled', !entry.isIntersecting);
-      },
-      { threshold: 0.1 }
-    );
-    observer.observe(hero);
-  } else {
-    // Fallback: listen to scroll event
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 60);
-    }, { passive: true });
-  }
+  // Header scrolls naturally with the page — no sticky behaviour.
 }
 
 /* ─────────────────────────────────────────────────────────────
