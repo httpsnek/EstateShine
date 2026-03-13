@@ -1039,6 +1039,28 @@ body.no-scroll {
   overflow: hidden;
 }
 
+@media (max-width: 768px) {
+  .booking-widget-wrapper {
+    height: 80vh;
+    max-height: none;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 12px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .booking-widget-wrapper iframe {
+    height: 100% !important;
+    width: 100% !important;
+    border: none;
+    display: block;
+    min-height: 1000px;
+  }
+}
+
 /* ─── SCROLL-REVEAL ANIMATIONS ───────────────────────────────── */
 .reveal {
   opacity: 0;
