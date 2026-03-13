@@ -708,52 +708,25 @@ function initFaqModal() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   BOOKING FOCUS SCROLL
-   - Saves scroll position when user engages the iframe
-   - Scrolls page to top of booking container for clear view
-   - Returns user to original position on click-outside
-   - Safety timeout resets state after 60 s of inactivity
+   MOBILE BOOKING REDIRECT
+   - On screens < 768px, all href="#booking" links open the
+     full BookingKoala page in a new tab instead of scrolling
+   - Desktop behaviour is completely unchanged
 ───────────────────────────────────────────────────────────── */
-function initBookingFocusScroll() {
-  const bookingSection = document.getElementById('booking');
-  const widgetWrapper  = document.querySelector('.booking-widget-wrapper');
-  if (!bookingSection || !widgetWrapper) return;
+function initMobileBookingRedirect() {
+  const BK_URL = 'https://estateshinecleaning.bookingkoala.com/booknow';
 
-  let userOriginalY = 0;
-  let safetyTimer   = null;
-
-  function resetState() {
-    userOriginalY = 0;
-    clearTimeout(safetyTimer);
-    safetyTimer = null;
+  function isMobile() {
+    return window.matchMedia('(max-width: 767px)').matches;
   }
 
-  function returnToOrigin() {
-    if (userOriginalY === 0) return;
-    window.scrollTo({ top: userOriginalY, behavior: 'smooth' });
-    resetState();
-  }
-
-  // ── Engage: first click/touch on or around the iframe ──
-  ['click', 'touchstart'].forEach(eventType => {
-    bookingSection.addEventListener(eventType, () => {
-      if (userOriginalY !== 0) return; // already engaged
-
-      userOriginalY = window.scrollY;
-
-      const wrapperTop = widgetWrapper.getBoundingClientRect().top + window.scrollY - 16;
-      window.scrollTo({ top: wrapperTop, behavior: 'smooth' });
-
-      // Safety: auto-reset after 60 s if user never clicks outside
-      safetyTimer = setTimeout(resetState, 60000);
-    }, { passive: true });
-  });
-
-  // ── Return: click anywhere outside the booking section ──
-  document.addEventListener('click', (e) => {
-    if (userOriginalY === 0) return;
-    if (bookingSection.contains(e.target)) return;
-    returnToOrigin();
+  document.querySelectorAll('a[href="#booking"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      if (!isMobile()) return; // desktop: let default scroll behaviour run
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      window.open(BK_URL, '_blank', 'noopener');
+    }, { capture: true });
   });
 }
 
@@ -768,5 +741,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initReviewsModal();
   initFloatingBookBtn();
   initFaqModal();
-  initBookingFocusScroll();
+  initMobileBookingRedirect();
 });

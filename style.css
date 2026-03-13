@@ -1035,8 +1035,24 @@ body.no-scroll {
   background: var(--color-off-white);
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
+  position: relative; /* needed for overlay positioning */
 }
 
+/* Invisible tap overlay — desktop: hidden; mobile: covers the iframe */
+.booking-mobile-overlay {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .booking-mobile-overlay {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    background: transparent;
+    cursor: pointer;
+  }
+}
 
 /* ─── SCROLL-REVEAL ANIMATIONS ───────────────────────────────── */
 .reveal {
