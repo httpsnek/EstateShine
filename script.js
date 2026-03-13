@@ -498,6 +498,8 @@ function initReviewsModal() {
 
   // ── Open ──
   function openModal() {
+    overlay.classList.add('is-active');
+    document.body.classList.add('no-scroll');
     modal.hidden = false;
     setTrackPadding();
     // Snap to card 1 instantly before fade-in
@@ -539,6 +541,14 @@ function initReviewsModal() {
       openModal();
     }, { capture: true });
   }
+
+  // ── Reviews links outside the drawer (e.g. footer) ──
+  document.querySelectorAll('footer a[href="#reviews"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal();
+    });
+  });
 
   // ── Overlay click: close modal if open, else fall through ──
   overlay.addEventListener('click', (e) => {
