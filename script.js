@@ -609,7 +609,7 @@ function initReviewsModal() {
 ───────────────────────────────────────────────────────────── */
 function initFloatingBookBtn() {
   const btn = document.querySelector('.floating-book-btn');
-  const bookingSection = document.getElementById('booking');
+  const bookingSection = document.querySelector('.booking-widget-wrapper');
   if (!btn || !bookingSection) return;
 
   const observer = new IntersectionObserver(
@@ -620,7 +620,7 @@ function initFloatingBookBtn() {
         btn.classList.remove('hidden');
       }
     },
-    { threshold: 0.1 }
+    { root: null, threshold: 0, rootMargin: '0px 0px -100px 0px' }
   );
   observer.observe(bookingSection);
 }
