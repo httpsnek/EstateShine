@@ -469,16 +469,9 @@
         <h2 id="booking-heading" class="section-heading" style="color: var(--color-gold);">Get Your Price &amp; Book Instantly</h2>
         <p class="section-subtext" style="color: var(--color-gold-light); opacity: 0.8;">No calls needed. Select your service and schedule online in minutes.</p>
 
-        <!-- BookingKoala widget container — styled with loading state -->
-        <div id="bookingkoala-widget-container" class="booking-widget-wrapper reveal" aria-label="Booking widget loading area">
-          <!-- CSS spinner (replaced by widget script when loaded) -->
-          <div class="booking-widget-placeholder">
-            <div class="booking-spinner" aria-hidden="true">
-              <div class="booking-spinner__ring"></div>
-              <div class="booking-spinner__dot"></div>
-            </div>
-            <p class="booking-widget-hint">Loading booking form…</p>
-          </div>
+        <!-- BookingKoala widget container -->
+        <div id="bookingkoala-widget-container" class="booking-widget-wrapper reveal" aria-label="Online booking form">
+          <iframe src="https://estateshinecleaning.bookingkoala.com/booknow?embed=true" style="border:none;height:1000px" width="100%" scrolling="no"></iframe><script src="https://estateshinecleaning.bookingkoala.com/resources/embed.js" defer></script>
         </div>
       </div>
     </section>

@@ -1041,61 +1041,13 @@ body.no-scroll {
 .booking-widget-wrapper {
   margin: 0 auto;
   max-width: 800px;
-  min-height: 400px;
+  width: 100%;
+  height: auto;
+  min-height: 1000px;
   background: var(--color-off-white);
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
-}
-
-.booking-widget-placeholder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-lg);
-  padding: var(--space-2xl);
-}
-
-/* CSS Spinner — gold ring + green dot */
-.booking-spinner {
-  position: relative;
-  width: 56px;
-  height: 56px;
-}
-
-.booking-spinner__ring {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 2px solid transparent;
-  border-top-color: var(--color-gold);
-  border-right-color: rgba(201, 168, 76, 0.3);
-  animation: spin 1.2s linear infinite;
-}
-
-.booking-spinner__dot {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 10px;
-  height: 10px;
-  background: var(--color-green);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-.booking-widget-hint {
-  font-family: var(--font-sans);
-  font-size: 0.78rem;
-  color: var(--color-text-light);
-  letter-spacing: 1px;
 }
 
 /* ─── SCROLL-REVEAL ANIMATIONS ───────────────────────────────── */
