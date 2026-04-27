@@ -76,8 +76,11 @@ function initMobileMenu() {
     }
   });
 
-  // Close when a nav link inside the menu is clicked
+  // Close when a primary nav link inside the menu is clicked.
+  // Secondary links (About / Privacy / Terms) handle their own drawer-close
+  // logic via initInfoModal, so they are excluded here.
   slideMenu.querySelectorAll('a').forEach(link => {
+    if (link.closest('.slide-menu__secondary-links')) return;
     link.addEventListener('click', closeMenu);
   });
 
@@ -748,6 +751,79 @@ function initMobileBookingRedirect() {
   });
 }
 
+/* ─────────────────────────────────────────────────────────────
+   INFO MODALS — Privacy Policy, Terms & Conditions, About Us
+   Reusable factory: opens/closes any .info-modal by ID,
+   binds all trigger links matching triggerSelector,
+   shares the #menu-overlay for the backdrop.
+───────────────────────────────────────────────────────────── */
+function initInfoModal(modalId, triggerSelector) {
+  const modal    = document.getElementById(modalId);
+  const closeBtn = modal?.querySelector('.info-modal__close');
+  const overlay  = document.getElementById('menu-overlay');
+
+  if (!modal || !overlay) return;
+
+  function openModal() {
+    overlay.classList.add('is-active');
+    document.body.classList.add('no-scroll');
+    modal.hidden = false;
+    requestAnimationFrame(() => modal.classList.add('is-open'));
+    closeBtn?.focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove('is-open');
+    overlay.classList.remove('is-active');
+    document.body.classList.remove('no-scroll');
+    modal.addEventListener('transitionend', () => { modal.hidden = true; }, { once: true });
+  }
+
+  const slideMenu = document.getElementById('slide-menu');
+  const hamburger = document.getElementById('hamburger');
+
+  // Close the drawer panel only (keep overlay + no-scroll active)
+  function closeDrawerOnly() {
+    if (!slideMenu) return;
+    slideMenu.classList.remove('is-open');
+    slideMenu.setAttribute('aria-hidden', 'true');
+    if (hamburger) {
+      hamburger.classList.remove('is-open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Open navigation menu');
+    }
+  }
+
+  // All links that should open this modal
+  document.querySelectorAll(triggerSelector).forEach(link => {
+    // Use capture phase so we intercept before other listeners (e.g. smooth scroll)
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      // If triggered from the slide menu, close the drawer but keep the overlay
+      if (slideMenu && slideMenu.contains(link)) {
+        closeDrawerOnly();
+      }
+      openModal();
+    }, { capture: true });
+  });
+
+  // Overlay click closes this modal (capture phase, stopImmediatePropagation
+  // ensures only the visible modal responds)
+  overlay.addEventListener('click', (e) => {
+    if (!modal.hidden) {
+      closeModal();
+      e.stopImmediatePropagation();
+    }
+  }, { capture: true });
+
+  closeBtn?.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.hidden) closeModal();
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initStickyHeader();
   initMobileMenu();
@@ -760,4 +836,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initFloatingBookBtn();
   initFaqModal();
   initMobileBookingRedirect();
+  initInfoModal('about-modal', 'a[href="#about"]');
 });
