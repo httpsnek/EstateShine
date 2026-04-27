@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(find /Users/nikitagosalo/Desktop/EstateShine -name \"*.png\" -o -name \"*.jpg\" -o -name \"*.jpeg\" 2>/dev/null | head -20)"
+      "Bash(find /Users/nikitagosalo/Desktop/EstateShine -name \"*.png\" -o -name \"*.jpg\" -o -name \"*.jpeg\" 2>/dev/null | head -20)",
+      "Bash(python3 - <<'EOF'\nimport re\n\ndef strip_inline\\(path, add_script=True\\):\n    with open\\(path, 'r', encoding='utf-8'\\) as f:\n        content = f.read\\(\\)\n\n    # Remove <style>...</style> block\n    content = re.sub\\(r'\\\\n  <style>.*?</style>', '', content, flags=re.DOTALL\\)\n\n    # Remove <script>...</script> block and replace with external\n    if add_script:\n        content = re.sub\\(r'\\\\n  <script>.*?</script>', '\\\\n  <script src=\"legal.js\"></script>', content, flags=re.DOTALL\\)\n\n    with open\\(path, 'w', encoding='utf-8'\\) as f:\n        f.write\\(content\\)\n    print\\(f'Done: {path}'\\)\n\nstrip_inline\\('privacy-policy.html'\\)\nstrip_inline\\('terms-and-conditions.html'\\)\nstrip_inline\\('about-us.html'\\)\nEOF)"
     ]
   }
 }
