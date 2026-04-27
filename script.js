@@ -77,8 +77,7 @@ function initMobileMenu() {
   });
 
   // Close when a primary nav link inside the menu is clicked.
-  // Secondary links (About / Privacy / Terms) handle their own drawer-close
-  // logic via initInfoModal, so they are excluded here.
+  // Secondary links (Privacy / Terms) open in new tab — exclude from auto-close.
   slideMenu.querySelectorAll('a').forEach(link => {
     if (link.closest('.slide-menu__secondary-links')) return;
     link.addEventListener('click', closeMenu);
@@ -629,8 +628,10 @@ function initFloatingBookBtn() {
   }
 
   // Desktop: watch the iframe wrapper; Mobile: watch the CTA block
+  // Slide menu book button: when menu opens it enters viewport → hide floating btn
   observe('.booking-widget-wrapper');
   observe('.booking-mobile-cta');
+  observe('.slide-menu__book-btn');
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -836,5 +837,4 @@ document.addEventListener('DOMContentLoaded', () => {
   initFloatingBookBtn();
   initFaqModal();
   initMobileBookingRedirect();
-  initInfoModal('about-modal', 'a[href="#about"]');
 });
