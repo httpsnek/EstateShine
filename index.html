@@ -77,14 +77,44 @@
         </a>
       </div>
 
-      <!-- RIGHT: Phone Icon + Book Now CTA -->
+      <!-- RIGHT: Phone Icon + Contact Popup -->
       <div class="header__right">
-        <a href="tel:+19165727150" class="phone-icon" aria-label="Call us — (916) 572-7150">
-          <!-- Phone SVG (white receiver in beige/cream circle) -->
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M6.6 10.8C7.8 13.2 9.8 15.2 12.2 16.4L14.2 14.4C14.4667 14.1333 14.8333 14.0667 15.2 14.2C16.3333 14.6 17.5667 14.8 18.8 14.8C19.4667 14.8 20 15.3333 20 16V19.2C20 19.8667 19.4667 20.4 18.8 20.4C10.4 20.4 3.6 13.6 3.6 5.2C3.6 4.5333 4.1333 4 4.8 4H8C8.6667 4 9.2 4.5333 9.2 5.2C9.2 6.4667 9.4 7.6667 9.8 8.8C9.9333 9.1667 9.8667 9.5333 9.6 9.8L7.6 11.8C7.26667 11.1333 6.93333 11 6.6 10.8Z" fill="white"/>
-          </svg>
-        </a>
+        <div class="phone-icon-wrapper">
+          <button id="phone-trigger" class="phone-icon" aria-label="Contact options — Call or SMS" aria-expanded="false" aria-haspopup="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M6.6 10.8C7.8 13.2 9.8 15.2 12.2 16.4L14.2 14.4C14.4667 14.1333 14.8333 14.0667 15.2 14.2C16.3333 14.6 17.5667 14.8 18.8 14.8C19.4667 14.8 20 15.3333 20 16V19.2C20 19.8667 19.4667 20.4 18.8 20.4C10.4 20.4 3.6 13.6 3.6 5.2C3.6 4.5333 4.1333 4 4.8 4H8C8.6667 4 9.2 4.5333 9.2 5.2C9.2 6.4667 9.4 7.6667 9.8 8.8C9.9333 9.1667 9.8667 9.5333 9.6 9.8L7.6 11.8C7.26667 11.1333 6.93333 11 6.6 10.8Z" fill="white"/>
+            </svg>
+          </button>
+
+          <!-- Contact choice popup -->
+          <div id="phone-popup" class="phone-popup" hidden role="menu" aria-label="Contact options">
+            <a href="tel:+19165727150" class="phone-popup__option" role="menuitem">
+              <div class="phone-popup__icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M6.6 10.8C7.8 13.2 9.8 15.2 12.2 16.4L14.2 14.4C14.47 14.13 14.83 14.07 15.2 14.2C16.33 14.6 17.57 14.8 18.8 14.8C19.47 14.8 20 15.33 20 16V19.2C20 19.87 19.47 20.4 18.8 20.4C10.4 20.4 3.6 13.6 3.6 5.2C3.6 4.53 4.13 4 4.8 4H8C8.67 4 9.2 4.53 9.2 5.2C9.2 6.47 9.4 7.67 9.8 8.8C9.93 9.17 9.87 9.53 9.6 9.8L7.6 11.8C7.27 11.13 6.93 11 6.6 10.8Z" fill="#C9A84C"/>
+                </svg>
+              </div>
+              <div class="phone-popup__info">
+                <span class="phone-popup__action">Call Us</span>
+                <span class="phone-popup__number">(916) 572-7150</span>
+              </div>
+            </a>
+            <div class="phone-popup__divider"></div>
+            <a href="sms:+19165727150" class="phone-popup__option" role="menuitem">
+              <div class="phone-popup__icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <line x1="8" y1="10" x2="16" y2="10" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="8" y1="13" x2="13" y2="13" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="phone-popup__info">
+                <span class="phone-popup__action">Send SMS</span>
+                <span class="phone-popup__number">(916) 572-7150</span>
+              </div>
+            </a>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -363,36 +393,235 @@
         <h2 id="ba-heading" class="section-heading reveal reveal--delay-1">The Estate Shine Difference</h2>
         <p class="section-subtext reveal reveal--delay-2">Drag the slider to reveal the transformation. Every clean, every time.</p>
 
-        <div class="slider-wrapper reveal">
-          <div class="slider-container" id="before-after-slider" role="img" aria-label="Before and after cleaning comparison slider">
+        <div class="ba-carousel reveal">
 
-            <!-- AFTER image (bottom layer, full width) -->
-            <div class="slider-img slider-img--after"
-                 style="background-image: url('contnent/after-cleaning.png');"
-                 aria-label="After: clean room">
-              <span class="slider-label slider-label--after">AFTER</span>
-            </div>
+          <!-- Slides -->
+          <div class="ba-slides">
 
-            <!-- BEFORE image (top layer, clipped by JS) -->
-            <div class="slider-img slider-img--before"
-                 style="background-image: url('contnent/before-cleaning.png');"
-                 aria-label="Before: messy room">
-              <span class="slider-label slider-label--before">BEFORE</span>
-            </div>
+            <!-- Arrow buttons (overlaid on image) -->
+            <button class="ba-carousel__arrow ba-carousel__arrow--prev" aria-label="Previous comparison">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <polyline points="13,4 7,10 13,16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button class="ba-carousel__arrow ba-carousel__arrow--next" aria-label="Next comparison">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <polyline points="7,4 13,10 7,16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
 
-            <!-- Draggable handle -->
-            <div class="slider-handle" id="slider-handle" role="slider" aria-label="Drag to compare before and after" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" tabindex="0">
-              <div class="slider-handle__line"></div>
-              <div class="slider-handle__btn">
-                <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M6 1.5L1.5 6L6 10.5" stroke="#1E3A2F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M14 1.5L18.5 6L14 10.5" stroke="#1E3A2F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+            <!-- Slide 1: Bathroom (real photos) -->
+            <div class="ba-slide is-active" data-label="Bathroom">
+              <div class="slider-wrapper">
+                <div class="slider-container before-after-slider" role="img" aria-label="Bathroom before and after cleaning">
+                  <div class="slider-img slider-img--after" style="background-image: url('contnent/after-cleaning.png');" aria-label="After: clean bathroom">
+                    <span class="slider-label slider-label--after">AFTER</span>
+                  </div>
+                  <div class="slider-img slider-img--before" style="background-image: url('contnent/before-cleaning.png');" aria-label="Before: messy bathroom">
+                    <span class="slider-label slider-label--before">BEFORE</span>
+                  </div>
+                  <div class="slider-handle" role="slider" aria-label="Drag to compare before and after" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" tabindex="0">
+                    <div class="slider-handle__line"></div>
+                    <div class="slider-handle__btn">
+                      <svg width="20" height="12" viewBox="0 0 20 12" fill="none" aria-hidden="true">
+                        <path d="M6 1.5L1.5 6L6 10.5" stroke="#1E3A2F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M14 1.5L18.5 6L14 10.5" stroke="#1E3A2F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
+            <!-- Slide 2: Kitchen (placeholder) -->
+            <div class="ba-slide" data-label="Kitchen">
+              <div class="slider-wrapper">
+                <div class="slider-container before-after-slider" role="img" aria-label="Kitchen before and after cleaning">
+                  <div class="slider-img slider-img--after ba-ph ba-ph--kitchen-after">
+                    <div class="ba-ph__content">
+                      <svg width="56" height="56" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                        <circle cx="20" cy="32" r="11" stroke="#1E3A2F" stroke-width="1.4"/>
+                        <circle cx="20" cy="32" r="5" stroke="#1E3A2F" stroke-width="1.4"/>
+                        <circle cx="44" cy="32" r="11" stroke="#1E3A2F" stroke-width="1.4"/>
+                        <circle cx="44" cy="32" r="5" stroke="#1E3A2F" stroke-width="1.4"/>
+                        <line x1="8" y1="48" x2="56" y2="48" stroke="#1E3A2F" stroke-width="1.4" stroke-linecap="round" opacity="0.5"/>
+                      </svg>
+                      <span class="ba-ph__label">Kitchen · Photo Coming Soon</span>
+                    </div>
+                    <span class="slider-label slider-label--after">AFTER</span>
+                  </div>
+                  <div class="slider-img slider-img--before ba-ph ba-ph--kitchen-before">
+                    <div class="ba-ph__content">
+                      <svg width="56" height="56" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                        <circle cx="20" cy="32" r="11" stroke="rgba(255,255,255,0.35)" stroke-width="1.4"/>
+                        <circle cx="20" cy="32" r="5" stroke="rgba(255,255,255,0.35)" stroke-width="1.4"/>
+                        <circle cx="44" cy="32" r="11" stroke="rgba(255,255,255,0.35)" stroke-width="1.4"/>
+                        <circle cx="44" cy="32" r="5" stroke="rgba(255,255,255,0.35)" stroke-width="1.4"/>
+                        <line x1="8" y1="48" x2="56" y2="48" stroke="rgba(255,255,255,0.2)" stroke-width="1.4" stroke-linecap="round"/>
+                      </svg>
+                      <span class="ba-ph__label">Kitchen · Photo Coming Soon</span>
+                    </div>
+                    <span class="slider-label slider-label--before">BEFORE</span>
+                  </div>
+                  <div class="slider-handle" role="slider" aria-label="Drag to compare before and after" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" tabindex="0">
+                    <div class="slider-handle__line"></div>
+                    <div class="slider-handle__btn">
+                      <svg width="20" height="12" viewBox="0 0 20 12" fill="none" aria-hidden="true">
+                        <path d="M6 1.5L1.5 6L6 10.5" stroke="#1E3A2F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M14 1.5L18.5 6L14 10.5" stroke="#1E3A2F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 3: Living Room (placeholder) -->
+            <div class="ba-slide" data-label="Living Room">
+              <div class="slider-wrapper">
+                <div class="slider-container before-after-slider" role="img" aria-label="Living room before and after cleaning">
+                  <div class="slider-img slider-img--after ba-ph ba-ph--living-after">
+                    <div class="ba-ph__content">
+                      <svg width="56" height="56" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                        <rect x="10" y="28" width="44" height="18" rx="3" stroke="#1E3A2F" stroke-width="1.4"/>
+                        <rect x="10" y="20" width="44" height="12" rx="3" stroke="#1E3A2F" stroke-width="1.4"/>
+                        <rect x="6" y="24" width="10" height="22" rx="3" stroke="#1E3A2F" stroke-width="1.4"/>
+                        <rect x="48" y="24" width="10" height="22" rx="3" stroke="#1E3A2F" stroke-width="1.4"/>
+                        <line x1="16" y1="46" x2="16" y2="52" stroke="#1E3A2F" stroke-width="1.4" stroke-linecap="round" opacity="0.5"/>
+                        <line x1="48" y1="46" x2="48" y2="52" stroke="#1E3A2F" stroke-width="1.4" stroke-linecap="round" opacity="0.5"/>
+                      </svg>
+                      <span class="ba-ph__label">Living Room · Photo Coming Soon</span>
+                    </div>
+                    <span class="slider-label slider-label--after">AFTER</span>
+                  </div>
+                  <div class="slider-img slider-img--before ba-ph ba-ph--living-before">
+                    <div class="ba-ph__content">
+                      <svg width="56" height="56" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                        <rect x="10" y="28" width="44" height="18" rx="3" stroke="rgba(255,255,255,0.35)" stroke-width="1.4"/>
+                        <rect x="10" y="20" width="44" height="12" rx="3" stroke="rgba(255,255,255,0.35)" stroke-width="1.4"/>
+                        <rect x="6" y="24" width="10" height="22" rx="3" stroke="rgba(255,255,255,0.35)" stroke-width="1.4"/>
+                        <rect x="48" y="24" width="10" height="22" rx="3" stroke="rgba(255,255,255,0.35)" stroke-width="1.4"/>
+                      </svg>
+                      <span class="ba-ph__label">Living Room · Photo Coming Soon</span>
+                    </div>
+                    <span class="slider-label slider-label--before">BEFORE</span>
+                  </div>
+                  <div class="slider-handle" role="slider" aria-label="Drag to compare before and after" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" tabindex="0">
+                    <div class="slider-handle__line"></div>
+                    <div class="slider-handle__btn">
+                      <svg width="20" height="12" viewBox="0 0 20 12" fill="none" aria-hidden="true">
+                        <path d="M6 1.5L1.5 6L6 10.5" stroke="#1E3A2F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M14 1.5L18.5 6L14 10.5" stroke="#1E3A2F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 4: Bedroom (placeholder) -->
+            <div class="ba-slide" data-label="Bedroom">
+              <div class="slider-wrapper">
+                <div class="slider-container before-after-slider" role="img" aria-label="Bedroom before and after cleaning">
+                  <div class="slider-img slider-img--after ba-ph ba-ph--bedroom-after">
+                    <div class="ba-ph__content">
+                      <svg width="56" height="56" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                        <rect x="8" y="20" width="48" height="30" rx="4" stroke="#1E3A2F" stroke-width="1.4"/>
+                        <rect x="8" y="20" width="48" height="13" rx="4" stroke="#1E3A2F" stroke-width="1.4"/>
+                        <rect x="16" y="33" width="14" height="17" rx="2" stroke="#1E3A2F" stroke-width="1.4" opacity="0.5"/>
+                        <rect x="34" y="33" width="14" height="17" rx="2" stroke="#1E3A2F" stroke-width="1.4" opacity="0.5"/>
+                        <line x1="14" y1="50" x2="14" y2="55" stroke="#1E3A2F" stroke-width="1.4" stroke-linecap="round" opacity="0.5"/>
+                        <line x1="50" y1="50" x2="50" y2="55" stroke="#1E3A2F" stroke-width="1.4" stroke-linecap="round" opacity="0.5"/>
+                      </svg>
+                      <span class="ba-ph__label">Bedroom · Photo Coming Soon</span>
+                    </div>
+                    <span class="slider-label slider-label--after">AFTER</span>
+                  </div>
+                  <div class="slider-img slider-img--before ba-ph ba-ph--bedroom-before">
+                    <div class="ba-ph__content">
+                      <svg width="56" height="56" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                        <rect x="8" y="20" width="48" height="30" rx="4" stroke="rgba(255,255,255,0.35)" stroke-width="1.4"/>
+                        <rect x="8" y="20" width="48" height="13" rx="4" stroke="rgba(255,255,255,0.35)" stroke-width="1.4"/>
+                        <rect x="16" y="33" width="14" height="17" rx="2" stroke="rgba(255,255,255,0.2)" stroke-width="1.4"/>
+                        <rect x="34" y="33" width="14" height="17" rx="2" stroke="rgba(255,255,255,0.2)" stroke-width="1.4"/>
+                      </svg>
+                      <span class="ba-ph__label">Bedroom · Photo Coming Soon</span>
+                    </div>
+                    <span class="slider-label slider-label--before">BEFORE</span>
+                  </div>
+                  <div class="slider-handle" role="slider" aria-label="Drag to compare before and after" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" tabindex="0">
+                    <div class="slider-handle__line"></div>
+                    <div class="slider-handle__btn">
+                      <svg width="20" height="12" viewBox="0 0 20 12" fill="none" aria-hidden="true">
+                        <path d="M6 1.5L1.5 6L6 10.5" stroke="#1E3A2F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M14 1.5L18.5 6L14 10.5" stroke="#1E3A2F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 5: Office (placeholder) -->
+            <div class="ba-slide" data-label="Office">
+              <div class="slider-wrapper">
+                <div class="slider-container before-after-slider" role="img" aria-label="Office before and after cleaning">
+                  <div class="slider-img slider-img--after ba-ph ba-ph--office-after">
+                    <div class="ba-ph__content">
+                      <svg width="56" height="56" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                        <rect x="14" y="12" width="36" height="26" rx="3" stroke="#1E3A2F" stroke-width="1.4"/>
+                        <line x1="32" y1="38" x2="32" y2="46" stroke="#1E3A2F" stroke-width="1.4" stroke-linecap="round"/>
+                        <line x1="22" y1="46" x2="42" y2="46" stroke="#1E3A2F" stroke-width="1.4" stroke-linecap="round"/>
+                        <line x1="8" y1="52" x2="56" y2="52" stroke="#1E3A2F" stroke-width="1.4" stroke-linecap="round" opacity="0.4"/>
+                        <rect x="20" y="18" width="24" height="14" rx="1" stroke="#1E3A2F" stroke-width="1" opacity="0.35"/>
+                      </svg>
+                      <span class="ba-ph__label">Office · Photo Coming Soon</span>
+                    </div>
+                    <span class="slider-label slider-label--after">AFTER</span>
+                  </div>
+                  <div class="slider-img slider-img--before ba-ph ba-ph--office-before">
+                    <div class="ba-ph__content">
+                      <svg width="56" height="56" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                        <rect x="14" y="12" width="36" height="26" rx="3" stroke="rgba(255,255,255,0.35)" stroke-width="1.4"/>
+                        <line x1="32" y1="38" x2="32" y2="46" stroke="rgba(255,255,255,0.35)" stroke-width="1.4" stroke-linecap="round"/>
+                        <line x1="22" y1="46" x2="42" y2="46" stroke="rgba(255,255,255,0.35)" stroke-width="1.4" stroke-linecap="round"/>
+                        <line x1="8" y1="52" x2="56" y2="52" stroke="rgba(255,255,255,0.2)" stroke-width="1.4" stroke-linecap="round"/>
+                      </svg>
+                      <span class="ba-ph__label">Office · Photo Coming Soon</span>
+                    </div>
+                    <span class="slider-label slider-label--before">BEFORE</span>
+                  </div>
+                  <div class="slider-handle" role="slider" aria-label="Drag to compare before and after" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" tabindex="0">
+                    <div class="slider-handle__line"></div>
+                    <div class="slider-handle__btn">
+                      <svg width="20" height="12" viewBox="0 0 20 12" fill="none" aria-hidden="true">
+                        <path d="M6 1.5L1.5 6L6 10.5" stroke="#1E3A2F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M14 1.5L18.5 6L14 10.5" stroke="#1E3A2F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /.ba-slides -->
+
+          <!-- Meta: room name + counter -->
+          <div class="ba-carousel__meta">
+            <span class="ba-carousel__room-name">Bathroom</span>
+            <span class="ba-carousel__counter">1 / 5</span>
           </div>
-        </div>
+
+          <!-- Dot indicators -->
+          <div class="ba-carousel__dots" role="group" aria-label="Slide navigation">
+            <button class="ba-dot is-active" aria-label="Bathroom"></button>
+            <button class="ba-dot" aria-label="Kitchen"></button>
+            <button class="ba-dot" aria-label="Living Room"></button>
+            <button class="ba-dot" aria-label="Bedroom"></button>
+            <button class="ba-dot" aria-label="Office"></button>
+          </div>
+
+        </div><!-- /.ba-carousel -->
       </div>
     </section>
 

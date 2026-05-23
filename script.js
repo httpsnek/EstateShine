@@ -288,95 +288,121 @@ function initBlueprint() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   4. BEFORE / AFTER IMAGE SLIDER
+   4. BEFORE / AFTER IMAGE SLIDER — multi-instance + carousel
+   - Each .before-after-slider initialised independently
    - rAF-coalesced DOM writes for 60fps
-   - clientX + getBoundingClientRect (viewport-relative, correct after scroll)
-   - Non-passive touchmove on container to allow preventDefault
+   - initBACarousel() drives slide switching + dots + arrows
 ───────────────────────────────────────────────────────────── */
 function initBeforeAfter() {
-  const container = document.getElementById('before-after-slider');
-  const handle    = document.getElementById('slider-handle');
-  const beforeImg = container?.querySelector('.slider-img--before');
+  // ── Initialise every slider instance independently ──
+  document.querySelectorAll('.before-after-slider').forEach(container => {
+    const handle    = container.querySelector('.slider-handle');
+    const beforeImg = container.querySelector('.slider-img--before');
+    if (!handle || !beforeImg) return;
 
-  if (!container || !handle || !beforeImg) return;
+    let isDragging = false;
+    let currentPct = 50;
+    let rafId      = null;
+    let pendingPct = null;
 
-  let isDragging = false;
-  let currentPct = 50;
-  let rafId      = null;
-  let pendingPct = null;
+    function applySplit(pct) {
+      pct = Math.max(2, Math.min(98, pct));
+      currentPct = pct;
+      beforeImg.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+      handle.style.left        = `${pct}%`;
+      handle.setAttribute('aria-valuenow', Math.round(pct));
+    }
 
-  // Commit a split — always called inside rAF
-  function applySplit(pct) {
-    pct = Math.max(2, Math.min(98, pct));
-    currentPct = pct;
-    beforeImg.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
-    handle.style.left        = `${pct}%`;
-    handle.setAttribute('aria-valuenow', Math.round(pct));
-  }
+    function scheduleSplit(pct) {
+      pendingPct = pct;
+      if (rafId !== null) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = null;
+        if (pendingPct !== null) { applySplit(pendingPct); pendingPct = null; }
+      });
+    }
 
-  // Schedule a split via rAF — coalesces multiple events per frame into one paint
-  function scheduleSplit(pct) {
-    pendingPct = pct;
-    if (rafId !== null) return;
-    rafId = requestAnimationFrame(() => {
-      rafId = null;
-      if (pendingPct !== null) { applySplit(pendingPct); pendingPct = null; }
+    function getPercent(clientX) {
+      const rect = container.getBoundingClientRect();
+      return ((clientX - rect.left) / rect.width) * 100;
+    }
+
+    // ── Mouse ──
+    handle.addEventListener('mousedown', (e) => { e.preventDefault(); isDragging = true; });
+    container.addEventListener('mousedown', (e) => {
+      if (handle.contains(e.target)) return;
+      scheduleSplit(getPercent(e.clientX));
+      isDragging = true;
     });
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      scheduleSplit(getPercent(e.clientX));
+    });
+    window.addEventListener('mouseup', () => { isDragging = false; });
+
+    // ── Touch ──
+    handle.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      isDragging = true;
+    }, { passive: false });
+    container.addEventListener('touchstart', (e) => {
+      if (handle.contains(e.target)) return;
+      scheduleSplit(getPercent(e.touches[0].clientX));
+      isDragging = true;
+    }, { passive: true });
+    container.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      scheduleSplit(getPercent(e.touches[0].clientX));
+    }, { passive: false });
+    window.addEventListener('touchend', () => { isDragging = false; });
+
+    // ── Keyboard ──
+    handle.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft')  applySplit(currentPct - 5);
+      if (e.key === 'ArrowRight') applySplit(currentPct + 5);
+    });
+
+    applySplit(50);
+  });
+
+  // ── Carousel navigation ──
+  initBACarousel();
+}
+
+/* Carousel: switches active slide, updates dots + meta label */
+function initBACarousel() {
+  const slides  = Array.from(document.querySelectorAll('.ba-slide'));
+  const dots    = Array.from(document.querySelectorAll('.ba-dot'));
+  const prevBtn = document.querySelector('.ba-carousel__arrow--prev');
+  const nextBtn = document.querySelector('.ba-carousel__arrow--next');
+  const roomEl  = document.querySelector('.ba-carousel__room-name');
+  const ctrEl   = document.querySelector('.ba-carousel__counter');
+
+  if (!slides.length) return;
+
+  let current = 0;
+
+  function goTo(idx) {
+    slides[current].classList.remove('is-active');
+    dots[current]?.classList.remove('is-active');
+    current = (idx + slides.length) % slides.length;
+    slides[current].classList.add('is-active');
+    dots[current]?.classList.add('is-active');
+    if (roomEl) roomEl.textContent = slides[current].dataset.label || '';
+    if (ctrEl)  ctrEl.textContent  = `${current + 1} / ${slides.length}`;
   }
 
-  // Use clientX + getBoundingClientRect (both viewport-relative — correct after scroll)
-  function getPercent(clientX) {
-    const rect = container.getBoundingClientRect();
-    return ((clientX - rect.left) / rect.width) * 100;
-  }
+  prevBtn?.addEventListener('click', () => goTo(current - 1));
+  nextBtn?.addEventListener('click', () => goTo(current + 1));
+  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
 
-  // ── Mouse ──
-  handle.addEventListener('mousedown', (e) => {
-    e.preventDefault();
-    isDragging = true;
+  // Keyboard: left/right arrows on the carousel section
+  document.querySelector('.ba-carousel')?.addEventListener('keydown', (e) => {
+    if (document.activeElement.classList.contains('slider-handle')) return; // let slider handle it
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(current - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
   });
-
-  container.addEventListener('mousedown', (e) => {
-    if (handle.contains(e.target)) return;
-    scheduleSplit(getPercent(e.clientX));
-    isDragging = true;
-  });
-
-  window.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
-    scheduleSplit(getPercent(e.clientX));
-  });
-
-  window.addEventListener('mouseup', () => { isDragging = false; });
-
-  // ── Touch (touch-action: pan-y set in CSS — horizontal drag captured by JS) ──
-  handle.addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    isDragging = true;
-  }, { passive: false });
-
-  container.addEventListener('touchstart', (e) => {
-    if (handle.contains(e.target)) return;
-    scheduleSplit(getPercent(e.touches[0].clientX));
-    isDragging = true;
-  }, { passive: true });
-
-  // Non-passive so we can preventDefault — prevents vertical scroll while dragging
-  container.addEventListener('touchmove', (e) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    scheduleSplit(getPercent(e.touches[0].clientX));
-  }, { passive: false });
-
-  window.addEventListener('touchend', () => { isDragging = false; });
-
-  // ── Keyboard ──
-  handle.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft')  applySplit(currentPct - 5);
-    if (e.key === 'ArrowRight') applySplit(currentPct + 5);
-  });
-
-  applySplit(50);
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -825,6 +851,51 @@ function initInfoModal(modalId, triggerSelector) {
   });
 }
 
+/* ─────────────────────────────────────────────────────────────
+   PHONE CONTACT POPUP
+   - Opens a small dropdown on phone-icon click
+   - Options: Call / Send SMS
+   - Closes on outside click or Escape
+───────────────────────────────────────────────────────────── */
+function initPhonePopup() {
+  const trigger = document.getElementById('phone-trigger');
+  const popup   = document.getElementById('phone-popup');
+  if (!trigger || !popup) return;
+
+  function openPopup() {
+    popup.hidden = false;
+    trigger.setAttribute('aria-expanded', 'true');
+    // Focus first option for keyboard users
+    popup.querySelector('.phone-popup__option')?.focus();
+  }
+
+  function closePopup() {
+    popup.hidden = true;
+    trigger.setAttribute('aria-expanded', 'false');
+  }
+
+  trigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    popup.hidden ? openPopup() : closePopup();
+  });
+
+  // Close when clicking outside
+  document.addEventListener('click', () => {
+    if (!popup.hidden) closePopup();
+  });
+
+  // Prevent clicks inside popup from bubbling up and closing it
+  popup.addEventListener('click', (e) => e.stopPropagation());
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !popup.hidden) {
+      closePopup();
+      trigger.focus();
+    }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initStickyHeader();
   initMobileMenu();
@@ -837,4 +908,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initFloatingBookBtn();
   initFaqModal();
   initMobileBookingRedirect();
+  initPhonePopup();
 });

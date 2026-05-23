@@ -2444,3 +2444,373 @@ body.no-scroll {
     margin-bottom: 6px;
   }
 }
+
+/* ============================================================
+   PHONE CONTACT POPUP
+   ============================================================ */
+
+.phone-icon-wrapper {
+  position: relative;
+}
+
+.phone-popup {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 500;
+  background: rgba(8, 24, 16, 0.96);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  border-radius: 14px;
+  padding: 6px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(201, 168, 76, 0.08);
+  min-width: 210px;
+  animation: phonePopupIn 0.18s ease;
+}
+
+.phone-popup[hidden] { display: none; }
+
+@keyframes phonePopupIn {
+  from { opacity: 0; transform: translateY(-6px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+/* Small arrow pointing up */
+.phone-popup::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  right: 14px;
+  width: 10px;
+  height: 10px;
+  background: rgba(8, 24, 16, 0.96);
+  border-left: 1px solid rgba(201, 168, 76, 0.35);
+  border-top: 1px solid rgba(201, 168, 76, 0.35);
+  transform: rotate(45deg);
+  border-radius: 2px 0 0 0;
+}
+
+.phone-popup__option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 9px;
+  text-decoration: none;
+  transition: background var(--transition-fast);
+}
+
+.phone-popup__option:hover,
+.phone-popup__option:focus-visible {
+  background: rgba(201, 168, 76, 0.12);
+  outline: none;
+}
+
+.phone-popup__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(201, 168, 76, 0.1);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.phone-popup__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.phone-popup__action {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  letter-spacing: 0.3px;
+}
+
+.phone-popup__number {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  color: var(--color-gold-light);
+  opacity: 0.6;
+}
+
+.phone-popup__divider {
+  height: 1px;
+  background: rgba(201, 168, 76, 0.12);
+  margin: 2px 8px;
+}
+
+/* ============================================================
+   BEFORE / AFTER CAROUSEL
+   ============================================================ */
+
+.ba-carousel {
+  width: 100%;
+}
+
+/* Slides container — arrows are positioned relative to this */
+.ba-slides {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Individual slide: hidden by default, shown when active */
+.ba-slide {
+  display: none;
+}
+
+.ba-slide.is-active {
+  display: block;
+  animation: baFadeIn 0.35s ease;
+}
+
+@keyframes baFadeIn {
+  from { opacity: 0; transform: scale(0.985); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Carousel nav arrows (overlaid on the image) ── */
+.ba-carousel__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(10, 30, 20, 0.75);
+  border: 1px solid rgba(201, 168, 76, 0.5);
+  color: var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.ba-carousel__arrow--prev { left: 14px; }
+.ba-carousel__arrow--next { right: 14px; }
+
+.ba-carousel__arrow:hover,
+.ba-carousel__arrow:focus-visible {
+  background: var(--color-gold);
+  color: var(--color-green);
+  outline: none;
+}
+
+.ba-carousel__arrow:active {
+  transform: translateY(-50%) scale(0.93);
+}
+
+@media (max-width: 767px) {
+  .ba-carousel__arrow {
+    width: 36px;
+    height: 36px;
+  }
+  .ba-carousel__arrow--prev { left: 10px; }
+  .ba-carousel__arrow--next { right: 10px; }
+}
+
+/* ── Meta: room name + counter ── */
+.ba-carousel__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 800px;
+  margin: 14px auto 0;
+  padding: 0 4px;
+}
+
+.ba-carousel__room-name {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--color-green);
+}
+
+.ba-carousel__counter {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  color: var(--color-text-light);
+  letter-spacing: 1px;
+}
+
+/* ── Dot indicators ── */
+.ba-carousel__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.ba-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(201, 168, 76, 0.28);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.ba-dot.is-active {
+  background: var(--color-gold);
+  transform: scale(1.35);
+}
+
+.ba-dot:hover {
+  background: var(--color-gold-dark);
+}
+
+/* ── Dot hit-area expansion (invisible padding so finger can tap easily) ── */
+.ba-dot {
+  position: relative;
+}
+.ba-dot::before {
+  content: '';
+  position: absolute;
+  inset: -10px; /* expands tap zone to ~28×28px without changing visual */
+}
+
+/* ── Placeholder slides ── */
+.ba-ph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ba-ph__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+  user-select: none;
+  max-width: 100%;
+  padding: 0 48px; /* clearance from overlaid arrows */
+}
+
+.ba-ph__label {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: normal;
+  line-height: 1.5;
+}
+
+/* AFTER placeholders — light, clean */
+.ba-ph--kitchen-after  { background: linear-gradient(145deg, #F8F5F0 0%, #EDE8E0 50%, #F3EFE8 100%); }
+.ba-ph--kitchen-after  .ba-ph__label { color: rgba(30, 58, 47, 0.45); }
+
+.ba-ph--living-after   { background: linear-gradient(145deg, #F5F3EE 0%, #EDE8E2 50%, #F1EDE7 100%); }
+.ba-ph--living-after   .ba-ph__label { color: rgba(30, 58, 47, 0.45); }
+
+.ba-ph--bedroom-after  { background: linear-gradient(145deg, #F4F2EF 0%, #EBE8E3 50%, #F0EDE8 100%); }
+.ba-ph--bedroom-after  .ba-ph__label { color: rgba(30, 58, 47, 0.45); }
+
+.ba-ph--office-after   { background: linear-gradient(145deg, #F6F4F1 0%, #ECEAE6 50%, #F2F0EC 100%); }
+.ba-ph--office-after   .ba-ph__label { color: rgba(30, 58, 47, 0.45); }
+
+/* BEFORE placeholders — dark, gloomy */
+.ba-ph--kitchen-before  { background: linear-gradient(145deg, #5C4228 0%, #7A5C3C 50%, #604535 100%); }
+.ba-ph--kitchen-before  .ba-ph__label { color: rgba(255, 255, 255, 0.32); }
+
+.ba-ph--living-before   { background: linear-gradient(145deg, #6B5C48 0%, #7A6C5C 50%, #5C5048 100%); }
+.ba-ph--living-before   .ba-ph__label { color: rgba(255, 255, 255, 0.32); }
+
+.ba-ph--bedroom-before  { background: linear-gradient(145deg, #5C5048 0%, #70645C 50%, #504844 100%); }
+.ba-ph--bedroom-before  .ba-ph__label { color: rgba(255, 255, 255, 0.32); }
+
+.ba-ph--office-before   { background: linear-gradient(145deg, #585858 0%, #747474 50%, #525252 100%); }
+.ba-ph--office-before   .ba-ph__label { color: rgba(255, 255, 255, 0.32); }
+
+/* ============================================================
+   CAROUSEL + PHONE POPUP — MOBILE REFINEMENTS
+   ============================================================ */
+
+/* ── Tablet / large phone ── */
+@media (max-width: 767px) {
+
+  /* Dots: slightly larger for easier tapping */
+  .ba-carousel__dots {
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .ba-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  /* Placeholder icons: smaller to fit narrow slider */
+  .ba-ph__content svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Placeholder label: tighter tracking, allow line-break */
+  .ba-ph__label {
+    font-size: 0.58rem;
+    letter-spacing: 1.2px;
+    max-width: 160px;
+  }
+
+  /* Meta row */
+  .ba-carousel__meta {
+    margin-top: 10px;
+  }
+  .ba-carousel__room-name {
+    font-size: 0.9rem;
+  }
+
+  /* Phone popup: constrain width so it never overflows viewport */
+  .phone-popup {
+    min-width: 190px;
+    right: -4px; /* slight nudge inward from screen edge */
+  }
+}
+
+/* ── Very small phones (≤ 390px) ── */
+@media (max-width: 390px) {
+
+  /* Hide placeholder text label — too cramped */
+  .ba-ph__label {
+    display: none;
+  }
+
+  /* Smaller SVG icon */
+  .ba-ph__content svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Tighter gap in placeholder content */
+  .ba-ph__content {
+    gap: 6px;
+    padding: 0 44px;
+  }
+
+  /* Phone popup fits 320px screens */
+  .phone-popup {
+    min-width: 175px;
+  }
+  .phone-popup__action {
+    font-size: 0.75rem;
+  }
+  .phone-popup__number {
+    font-size: 0.66rem;
+  }
+}
